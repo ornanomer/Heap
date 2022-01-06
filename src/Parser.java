@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Parser {
     // set to true for debugging
     public static boolean debugMode = true;
+    public static CommandsTime commands   = new CommandsTime();
 
     //heap types
     List<MergeableHeap<Integer>> heaps = new LinkedList<>();
@@ -27,6 +28,7 @@ public class Parser {
     //consturctor
     Parser(String heapType){
         this.heapType = HeapType.valueOf(heapType);
+
     }
 
 
@@ -48,28 +50,49 @@ public class Parser {
     }
 
 
+
     /**
      * run the command as requested  by the use/file
      * @param command
      */
     public void executeCommand(String command){
         String[] part = command.split(" ");
+        Long startOp, endOp;
+
         switch (part[0]){
             case "MakeHeap":
+                 startOp =System.currentTimeMillis();
                 createHeap();
+                endOp =System.currentTimeMillis();
+                commands.getMakeHeap().addTime(endOp - startOp);
                 break;
             case "Insert" :
+                startOp =System.currentTimeMillis();
                 heaps.get(heaps.size() -1).insert(Integer.valueOf(part[1]));
+                endOp =System.currentTimeMillis();
+                commands.getInsert().addTime(endOp - startOp);
                 break;
             case "ExtractMin" :
+                startOp =System.currentTimeMillis();
+
                 heaps.get(heaps.size() -1).extractMinimum();
+                endOp =System.currentTimeMillis();
+                commands.getExtract().addTime(endOp - startOp);
                 break;
             case "MINIMUM" :
+                startOp =System.currentTimeMillis();
                 heaps.get(heaps.size() -1).minimum();
+                endOp =System.currentTimeMillis();
+                commands.getMinimum().addTime(endOp - startOp);
                 break;
             case "UNION":
+                startOp =System.currentTimeMillis();
                 MergeableHeap<Integer> union = heaps.remove(0).union( heaps.remove(0));
+                endOp =System.currentTimeMillis();
+                commands.getUnion().addTime(endOp - startOp);
                 heaps.add(0, union);
+                break;
+
         }
         if(debugMode){
             for(int i = 0; i< heaps.size(); i++) {

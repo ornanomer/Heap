@@ -40,6 +40,10 @@ public class TestPerformance {
                 bw.newLine();
             }
             for (int i = 0; i < 20; i++) {
+                bw.write("MINIMUM");
+                bw.newLine();
+            }
+            for (int i = 0; i < 20; i++) {
                 bw.write("ExtractMin");
                 bw.newLine();
             }
@@ -79,6 +83,10 @@ public class TestPerformance {
 
             for (int i = 10000; i >0; i--) {
                 bw.write("Insert " + i);
+                bw.newLine();
+            }
+            for (int i = 0; i < 20; i++) {
+                bw.write("MINIMUM");
                 bw.newLine();
             }
             for (int i = 0; i < 20; i++) {
@@ -130,6 +138,10 @@ public class TestPerformance {
                 bw.newLine();
             }
             for (int i = 0; i < 20; i++) {
+                bw.write("MINIMUM");
+                bw.newLine();
+            }
+            for (int i = 0; i < 20; i++) {
                 bw.write("ExtractMin");
                 bw.newLine();
             }
@@ -150,10 +162,18 @@ public class TestPerformance {
         randomizeFile();
         Parser.debugMode = false;
         Parser.userFileCommand(1, "ascending.txt");
+        System.out.println(Parser.commands);
+        Parser.commands = new CommandsTime();
 
         Parser.userFileCommand(3, "randomize.txt");
+        System.out.println(Parser.commands);
+        Parser.commands = new CommandsTime();
         Parser.userFileCommand(3, "descending.txt");
+        System.out.println(Parser.commands);
+        Parser.commands = new CommandsTime();
         Parser.userFileCommand(3, "ascending.txt");
+        System.out.println(Parser.commands);
+        Parser.commands = new CommandsTime();
 
 
 

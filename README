@@ -25,16 +25,19 @@ Test:
     In order to test it, I have created 3 files. first files - value with ascending order, second, files with descending order,
     and third randomize values. full code can be view in TestPerformance
     As expected the ascending file run the fastest, since the value has been inserted to the head each time.
-    and the descending was slawer by 8~ times!
+    and the descending was slowest  by 8~ times!
     the randomize was only 3 times slower then the ascending.
+    I used the commandsTime & commandstime to aggraget the exact ammount of time for each operation:
+    As we can see the descending is return the worth result for each operation(minimum & extract is always zero since this operation is less the millisecond - o(1) complexity as explained above)
 
+    file ascending.txt type SortedHeap time 55
+    CommandsTime{makeHeap=CommandTime{count=2, time=2, average=1.0}, insert=CommandTime{count=200, time=3, average=0.015}, union=CommandTime{count=1, time=0, average=0.0}, extract=CommandTime{count=40, time=0, average=0.0}, minimum=CommandTime{count=20, time=0, average=0.0}}
+    file randomize.txt type UnSortedHeap time 101
+    CommandsTime{makeHeap=CommandTime{count=2, time=1, average=0.5}, insert=CommandTime{count=20000, time=16, average=8.0E-4}, union=CommandTime{count=1, time=2, average=2.0}, extract=CommandTime{count=40, time=0, average=0.0}, minimum=CommandTime{count=20, time=0, average=0.0}}
+    file descending.txt type UnSortedHeap time 279
+    CommandsTime{makeHeap=CommandTime{count=2, time=0, average=0.0}, insert=CommandTime{count=20000, time=5, average=2.5E-4}, union=CommandTime{count=1, time=221, average=221.0}, extract=CommandTime{count=40, time=0, average=0.0}, minimum=CommandTime{count=20, time=0, average=0.0}}
+    file ascending.txt type UnSortedHeap time 39
+    CommandsTime{makeHeap=CommandTime{count=2, time=2, average=1.0}, insert=CommandTime{count=200, time=3, average=0.015}, union=CommandTime{count=1, time=0, average=0.0}, extract=CommandTime{count=40, time=0, average=0.0}, minimum=CommandTime{count=20, time=0, average=0.0}}
 
-    file ascending.txt type SortedHeap time 37 milliseconds
-    file randomize.txt type UnSortedHeap time 104 milliseconds
-    file descending.txt type UnSortedHeap time 269 milliseconds
-    file ascending.txt type UnSortedHeap time 2 milliseconds
-    file randomize.txt type DisjointHeap time 104 milliseconds
-    file descending.txt type DisjointHeap time 269 milliseconds
-    file ascending.txt type DisjointHeap time 2 milliseconds
 
 
