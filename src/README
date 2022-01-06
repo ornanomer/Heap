@@ -1,0 +1,40 @@
+how to run the program : run the main function in the TestPerformance class.
+SortedHeap:
+   I have implemented this data structure using double linked list, and set. The linked list is saving the data in
+     ascending order,and the set is saving the keys. the set target is to verify in o(1) that the key doesn't exist in the list.
+   In order of saving the order of the list, the biggest value should be added to tail, since the value are ordered, it can be achived in o(1).
+   insert - o(1),
+   extract-minimum - just remove the head of the list(since this is the smallest value) o(1)
+   union -  since every list is sorted, we can use the merge method that we learned in merge-sort, the complexity is o(n +m)
+   minimum - get the head of the list o(1)
+
+
+UnSortedHeap & DisjointHeap:
+  I have implemented this data structure using double linked list, and set. The linked list is saving the data in
+     ascending order,and the set is saving the keys. the set target is to verify in o(1) that the key doesn't exist in the list.
+   In order of saving the order of the list, the biggest value should be added to tail,
+   insert -In order to save the list ordered we should scan the linkedlist, in the base case the key is the smallest, and should be added as head, compleixty o(1)
+   in the worst case the value should be added to tail, in that case the scan will take o(n)
+   extract-minimum - just remove the head of the list(since this is the smallest value) o(1)
+   union -  since every list is sorted, we can use the merge method that we learned in merge-sort, the complexity is o(n +m)
+   minimum - get the head of the list o(1)
+
+  The same code is used for both, since I'm using also set, for verify if the key already has been used, in o(1).
+
+Test:
+    In order to test it, I have created 3 files. first files - value with ascending order, second, files with descending order,
+    and third randomize values. full code can be view in TestPerformance
+    As expected the ascending file run the fastest, since the value has been inserted to the head each time.
+    and the descending was slawer by 8~ times!
+    the randomize was only 3 times slower then the ascending.
+
+
+    file ascending.txt type SortedHeap time 37 milliseconds
+    file randomize.txt type UnSortedHeap time 104 milliseconds
+    file descending.txt type UnSortedHeap time 269 milliseconds
+    file ascending.txt type UnSortedHeap time 2 milliseconds
+    file randomize.txt type DisjointHeap time 104 milliseconds
+    file descending.txt type DisjointHeap time 269 milliseconds
+    file ascending.txt type DisjointHeap time 2 milliseconds
+
+
